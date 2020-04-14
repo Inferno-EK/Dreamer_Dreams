@@ -63,7 +63,7 @@ public class GenCode
             weight.Add(-1);
             GenLenght++;
         }
-        float cols_gen_to_mutate = 1.0f * GenLenght / System.Math.Abs(mutationPower);
+        float cols_gen_to_mutate = UnityEngine.Random.Range(0, GenLenght);
         for (int i = 0; i < cols_gen_to_mutate; ++i)
         {
 

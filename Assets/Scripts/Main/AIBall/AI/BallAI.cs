@@ -66,7 +66,7 @@ public class BallAI : MonoBehaviour
             }
 
         }*/
-        StartCoroutine(e(Random.Range(1f, 5f)));
+        StartCoroutine(e(Random.Range(0.1f, 0.5f)));
         AIContainer.Add(gameObject, ref Id);
     }
 
