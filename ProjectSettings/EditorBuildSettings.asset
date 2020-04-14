@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: d6ec74bc08b94a44ba79cd69cc51c2fb
+  - enabled: 1
+    path: Assets/Scenes/CreatePers.unity
+    guid: d9f486f279b7bf647babd896b11c51c6
+  - enabled: 1
+    path: Assets/Scenes/Selector.unity
+    guid: 2acaa2f6def97d14fa03832ba960d36d
+  - enabled: 1
+    path: Assets/Scenes/Mods/Fight.unity
+    guid: b6a13188f0246cb47a3d18687171faf1
+  - enabled: 1
+    path: Assets/Scenes/Mods/NewHero.unity
+    guid: 3c58759b0e6432e43a609579e989ef28
+  - enabled: 1
+    path: Assets/Scenes/Mods/Win_and_Lose.unity
+    guid: 28e428def8c9e034b846a370bbd0361c
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 389d96d36b28d774dac0cb6e45022627
+  - enabled: 1
+    path: Assets/Scenes/AboutMe.unity
+    guid: 19b49a24e58fd5b40919872707a73302
+  m_configObjects: {}
