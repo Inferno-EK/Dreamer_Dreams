@@ -14,6 +14,7 @@ public class AIWeapun : MonoBehaviour
             {
                 int id = collision.transform.parent.gameObject.GetComponent<BallAI>().Id;
                 BallAI aI = AIContainer.ais[id];
+                aI.Damage();
                 if (!aI.isAlife())
                 {
                     aI.Killing();

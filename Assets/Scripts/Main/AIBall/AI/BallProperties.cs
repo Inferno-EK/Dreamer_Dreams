@@ -5,7 +5,7 @@ public class BallProperties
 {
     public delegate int Response(BallProperties objectProperties);
     
-    public int Energy { get { return _energy; } set { if (value > maxEnergy) { _energy = maxEnergy; return; } if (value >= 0) { _energy = value; } else { _energy = -1; } } }
+    public long Energy { get { return _energy; } set { if (value > maxEnergy) { _energy = maxEnergy; return; } if (value >= 0) { _energy = value; } else { _energy = -1; } } }
     public List<GenCode> Genes { get; }
     public int ColsGenes { get { return Genes.Count; } }
     public int LengthGenes { get { if (Genes.Count != 0) return Genes[0].GenLenght; else  return 0; } }
@@ -16,18 +16,18 @@ public class BallProperties
     public int BoundsForfeit { get; }
     public int RotateForfeit { get; }
 
-    private int _energy;
+    private long _energy;
     private int _health;
     private float mutationChance;
     private int mutationPower;
-    private int maxEnergy;
+    private long maxEnergy;
     private int maxHealth;
 
     public BallProperties()
     {
         Genes = new List<GenCode>();
         maxHealth = 1;
-        maxEnergy = 100;
+        maxEnergy = (long)Random.Range(100, 1000);
         Energy = maxEnergy;
         Genes.Add(new GenCode());
         MovingSpeed = Random.Range(500, 1000);
@@ -75,9 +75,7 @@ public class BallProperties
             MutationBasic(ref mutate);
             RotateForfeit = mutate;
 
-            mutate = maxEnergy;
-            MutationBasic(ref mutate);
-            maxEnergy = mutate;
+            MutationEnergy();
 
             MutationGenes();
             MutationHealth();
@@ -97,14 +95,27 @@ public class BallProperties
     }
 
 
+    void MutationEnergy() // Speeds, maxEnergy and forfait
+    {
+        float mutation_stage = Random.Range(0f, 1f);
+        if (mutation_stage <= 0.33f && maxEnergy > 0)
+        {
+            maxEnergy -= maxEnergy / 10 * mutationPower;
+        }
+        if (mutation_stage >= 0.66f)
+        {
+            maxEnergy += maxEnergy / 10 * mutationPower;
+        }
+    }
+
     void MutationBasic(ref int Basic) // Speeds, maxEnergy and forfait
     {
         float mutation_stage = Random.Range(0f, 1f);
-        if (mutation_stage <= 0.33f)
+        if (mutation_stage <= 0.33f && Basic > 0)
         {
             Basic -= Basic / 100 * mutationPower;
         }
-        if (mutation_stage >= 0.66f)
+        if (mutation_stage >= 0.66f && Basic <= 10000)
         {
             Basic += Basic / 100 * mutationPower;
         }
@@ -125,7 +136,7 @@ public class BallProperties
                 item.GenMutate(mutationPower);
             }
         }
-        if (mutation_stage >= 0.9375f)
+        if (mutation_stage >= 0.9375f && Genes.Count <= 100)
         {
             Genes.Add(new GenCode());
         }
@@ -139,7 +150,7 @@ public class BallProperties
             --maxHealth;
         }
 
-        if (mutation_stage >= 0.9375f)
+        if (mutation_stage >= 0.9375f && maxHealth <= 100)
         {
             ++maxHealth;
         }
@@ -148,25 +159,25 @@ public class BallProperties
     void MutationMutationChance()
     {
         float mutation_stage = Random.Range(0f, 1f);
-        if (mutation_stage <= 0.33f )
+        if (mutation_stage <= 0.33f && mutationChance <= 1)
         {
-            mutationChance += 0.1f;
+            mutationChance += 0.01f*mutationPower;
         }
 
-        if (mutation_stage >= 0.66f)
+        if (mutation_stage >= 0.66f && mutationChance >= 0)
         {
-            mutationChance -= 0.1f;
+            mutationChance -= 0.01f*mutationPower;
         }
     }
     void MutationMutationPower()
     {
         float mutation_stage = Random.Range(0f, 1f);
-        if (mutation_stage <= 0.33f)
+        if (mutation_stage <= 0.33f && mutationPower <= 1000)
         {
             mutationPower += 1;
         }
 
-        if (mutation_stage >= 0.66f)
+        if (mutation_stage >= 0.66f && mutationPower >= 0)
         {
             mutationPower -= 1;
         }

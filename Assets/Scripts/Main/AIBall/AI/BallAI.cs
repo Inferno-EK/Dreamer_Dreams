@@ -2,6 +2,18 @@
 
 public class BallAI : MonoBehaviour
 {
+    public long energy;
+    public long health;
+    public long fortraitB;
+    public long fortraitR;
+
+
+
+
+
+
+
+
     public BallProperties properties = null;
 
     public int Id;
@@ -65,8 +77,10 @@ public class BallAI : MonoBehaviour
                 next = -1;
             }
 
-        }*/
-        StartCoroutine(e(Random.Range(0.1f, 0.5f)));
+        }*/    
+    fortraitB = properties.BoundsForfeit;
+    fortraitR = properties.RotateForfeit;
+    StartCoroutine(e(Random.Range(0.1f, 0.5f)));
         AIContainer.Add(gameObject, ref Id);
     }
 
@@ -145,6 +159,9 @@ public class BallAI : MonoBehaviour
 
     public float Calculate()
     {
+        energy = properties.Energy;
+        health = properties.Health;
+ 
         if (properties.Energy < 0)
         {
             Killing();
@@ -159,6 +176,7 @@ public class BallAI : MonoBehaviour
         {
             return -90f;
         }
+
         return (stage ? 90f : -90f);
     }
 }
