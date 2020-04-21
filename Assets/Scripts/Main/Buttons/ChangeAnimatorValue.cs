@@ -6,13 +6,8 @@ public class ChangeAnimatorValue : MonoBehaviour
 {
     [SerializeField] private Animator buttonAnimator;
  
-    public void TurningButtons(bool value)
+    public void ChangeStateTo(int value)
     {
-        buttonAnimator.SetBool("IsON", value);
+        buttonAnimator.SetInteger("State", value);
     }
-    public void TurningButtons()
-    {
-        buttonAnimator.SetBool("IsON", !buttonAnimator.GetBool("IsON"));
-    }
-
 }
