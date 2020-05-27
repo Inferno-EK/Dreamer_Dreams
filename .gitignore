@@ -1,0 +1,8 @@
+#Not code in files:
+*.meta
+*.[Cc]ache
+*.csproj
+*.sln
+.editorconfig
+*/
+!Assets/Scripts/

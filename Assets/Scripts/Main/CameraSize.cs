@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CameraSize : MonoBehaviour
 {
     Camera _thisCamera;
     Transform _transform;
+
     void Start()
     {
         _thisCamera = GetComponent<Camera>();
@@ -14,5 +16,6 @@ public class CameraSize : MonoBehaviour
     {
         _thisCamera.orthographicSize = 0.5f * Screen.height;
         _transform.position = new Vector3(Screen.width / 2f, Screen.height / 2f);
+
     }
 }
