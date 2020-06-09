@@ -15,6 +15,11 @@ public class GradientSlider : MonoBehaviour
 
     private Gradient _baseGradient;
 
+    public Color GetColor(float value)
+    {
+        return _baseGradient.Evaluate(value);
+    }
+
     void Start()
     {
         var baseSlider = GetComponent<UnityEngine.UI.Slider>();

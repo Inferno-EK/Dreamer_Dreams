@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class CameraSize : MonoBehaviour
 {
     Camera _thisCamera;

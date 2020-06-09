@@ -6,11 +6,9 @@ public class Global
 {
 	public SmartList<Hero> Herous;
 	public SmartList<Enemy> Enemies;
-
-
 	public Settings AllSettings;
-
-
+	//public ProjectResources GlobalResurses;
+	
 
 	private static Global inisialisadedObject;
 	private Global()

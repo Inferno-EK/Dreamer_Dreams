@@ -1,4 +1,5 @@
-﻿public class Creature
+﻿using UnityEngine;
+public class Creature
 {    
     public int Id { get; }
     public string Name { get; }
@@ -33,7 +34,7 @@
     public int Mood { get; protected set; }
 
     public Creature(int Id, string Name)
-    {
+    { 
         this.Id = Id;
         this.Name = Name;
     }

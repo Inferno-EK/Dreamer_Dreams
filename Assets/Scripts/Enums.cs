@@ -29,7 +29,7 @@
         Luck
     }
 
-    public enum Gender 
+    public enum Genger 
     {
         Male,
         Female
