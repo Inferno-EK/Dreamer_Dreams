@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class FileReader
 { 
-    readonly public List<string> _buffer;
+    readonly public List<string> Lines;
 
     public FileReader(string pathFromHomeDerictory, string fileName)
     {
-        _buffer = new List<string>();
+        Lines = new List<string>();
         var lines = File.ReadAllLines(Directory.GetCurrentDirectory() + pathFromHomeDerictory + fileName);
         foreach (var item in lines)
         {
-            _buffer.Add(item);
+            Lines.Add(item);
         }
     }
+
+
 }
 
 

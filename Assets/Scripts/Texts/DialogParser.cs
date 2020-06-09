@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 public class DialogParser
 {
-    public readonly List<Pair<string, string>> Frases;
+    public readonly List<Pair<string, string>> Phrases;
 
     public DialogParser(FileReader InputDialog, Hero[] heroes)
     {
-        Frases = new List<Pair<string, string>>();
+        Phrases = new List<Pair<string, string>>();
         Stack<bool> isEnable = new Stack<bool>();
 
-        foreach (var i in InputDialog._buffer)
+        foreach (var i in InputDialog.Lines)
         {
             switch (i[0])
             {
@@ -18,7 +18,7 @@ public class DialogParser
 
 
                     var par = i.Split(' ');
-                    bool useFrises = isEnable.Count == 0 || isEnable.Peek();
+                    bool usephrases = isEnable.Count == 0 || isEnable.Peek();
 
                     for (int p = 1; p < par.Length; p++)
                     {
@@ -28,20 +28,20 @@ public class DialogParser
                             if (par[p][1] == 'r')
                             {
                                 
-                                useFrises = useFrises && (UnityEngine.Random.value <= (float)(Convert.ToInt32(par[++p])) / Convert.ToInt32(par[++p]));
+                                usephrases = usephrases && (UnityEngine.Random.value <= (float)(Convert.ToInt32(par[++p])) / Convert.ToInt32(par[++p]));
                             }
                             else
                             {
                                 var g = heroes[Convert.ToInt32(par[++p])].HeroGenger;
                                 var compareString = "f";
                                 if (g == Enums.Genger.Male) compareString = "m";
-                                useFrises = useFrises && par[++p] == compareString;
+                                usephrases = usephrases && par[++p] == compareString;
                             }
                         }
                         else break;
 
                     }
-                    isEnable.Push(useFrises);
+                    isEnable.Push(usephrases);
                     break;
                 case '!':
                     isEnable.Push(!isEnable.Pop() && (isEnable.Count == 0 || isEnable.Peek()));
@@ -55,7 +55,7 @@ public class DialogParser
                     int j = 0;
                     for (int c = 0; j < i.Length && c < 2; j++) { if (i[j] == ' ') c++; }
                     var parF = i.Split(sep, 3);
-                    Frases.Add(new Pair<string, string>(heroes[Convert.ToInt32(parF[1].Substring(1))].Name, parF[2]));
+                    Phrases.Add(new Pair<string, string>(heroes[Convert.ToInt32(parF[1].Substring(1))].Name, parF[2]));
                     break;
             }
 
