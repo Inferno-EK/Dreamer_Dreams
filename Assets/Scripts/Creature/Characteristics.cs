@@ -2,7 +2,9 @@
 public struct Characteristics
 {
     public Temperaments Temperament;
-        
+    public Energy ThisEnergy;
+    public Health ThisHealth;
+
     public int Strength;
     public int Dexterity;
     public int Intelligence;
@@ -20,6 +22,8 @@ public struct Characteristics
         Wisdom = 0;
         Luck = 0;
         Temperament = Temperaments.Choleric;
+        ThisEnergy = new Energy(0);
+        ThisHealth = new Health(0);
         Randomising(scaleFactor);
     }
 
@@ -53,6 +57,13 @@ public struct Characteristics
 
         Temperament = (Temperaments)(random.Next(0, 4));
 
+        const int min_Health = 100;
+        const int max_Health = 200;
+        ThisHealth = new Health((int)(random.Next(min_Health, max_Health) * scaleFactor));
+
+        const int min_Energy= 100;
+        const int max_Energy = 200;
+        ThisEnergy = new Energy((int)(random.Next(min_Energy, max_Energy) * scaleFactor));
     }
 
     public void Upgrate(CharacteristicsValues WhatToChange, int Scale)

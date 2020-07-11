@@ -25,9 +25,9 @@ public class DialogViewer
             else
                 i++;
         }
-
-        { 
-            if (Lines[0][0].ToLower() != "mode") throw new Exception("first line must contain mode instruction");
+        yield return new WaitForEndOfFrame();
+        {
+            if (Lines[0][0].ToLower() != "mode") Debug.LogError("first line must contain mode instruction");
             if (Lines[0][1].ToLower() == "u") deactivationQueue = new Queue<Writer>(texts.Length);
             else
             {
@@ -35,10 +35,10 @@ public class DialogViewer
                 deactivationQueue = new Queue<Writer>(lengthQueue);
             }
 
-            if (Lines[1][0].ToLower() != "length") throw new Exception("second line must contain length instruction");
-            if (int.Parse(Lines[1][1].ToLower()) > texts.Length) throw new Exception();
+            if (Lines[1][0].ToLower() != "length") Debug.LogError("second line must contain length instruction");
+            Debug.Log(texts.Length);
+            if (int.Parse(Lines[1][1].ToLower()) > texts.Length) Debug.LogError("Length error");
         }
-        yield return new WaitForEndOfFrame();
         Writer currentText = null;
         for (int i = 2; i < Lines.Count; i++)
         {
@@ -47,9 +47,9 @@ public class DialogViewer
                 case "phrase":
                     if ((currentText) == null)
                     {
-                        throw new Exception();
+                        Debug.LogError("Phrase error");
                     }
-                    
+
                     while (currentText.isWriting != 0) yield return new WaitForSeconds(0.01f);
                     yield return currentText.WriteText(source.Phrases[0], Lines[i].Length == 1);
                     source.Phrases.RemoveAt(0);
@@ -65,9 +65,8 @@ public class DialogViewer
                         deactivationQueue.Dequeue().TurnOff();
                     }
                     break;
-
-
             }
         }
     }
+
 }

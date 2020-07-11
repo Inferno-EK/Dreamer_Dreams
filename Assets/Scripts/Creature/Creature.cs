@@ -4,6 +4,8 @@ public class Creature
     public int Id { get; }
     public string Name { get; }
     public bool IsAlife { get; protected set; }
+    public Characteristics Characteristics { get; protected set; }
+    public Weapon ThisWeapon { get; protected set; }
     public int Health
     {
         get
@@ -33,10 +35,11 @@ public class Creature
     }
     public int Mood { get; protected set; }
 
-    public Creature(int Id, string Name)
+    public Creature(int Id, string Name, float Scale = 1f)
     { 
         this.Id = Id;
         this.Name = Name;
+        Characteristics = new Characteristics(Scale);
     }
 
     public bool TryToAddEnergy(int value)

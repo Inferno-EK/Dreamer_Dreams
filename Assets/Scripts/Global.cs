@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Delegates;
+using System.Reflection;
 
 public class Global
 {
@@ -8,7 +11,6 @@ public class Global
 	public SmartList<Enemy> Enemies;
 	public Settings AllSettings;
 	//public ProjectResources GlobalResurses;
-	
 
 	private static Global inisialisadedObject;
 	private Global()

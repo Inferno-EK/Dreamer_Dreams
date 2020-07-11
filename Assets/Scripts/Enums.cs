@@ -26,7 +26,9 @@
         Intelligence,
         Endurance,
         Wisdom,
-        Luck
+        Luck, 
+        Health, 
+        Energy
     }
 
     public enum Genger 
@@ -34,5 +36,15 @@
         Male,
         Female
     }
+
+    public enum WeaponAbilites
+    { 
+        CommonAttack,
+        Defence,
+        SpecialAttack,
+        Combination,
+        Annihilation
+    }
+
 
 }
