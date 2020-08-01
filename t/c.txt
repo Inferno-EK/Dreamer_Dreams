@@ -1,0 +1,12 @@
+mode m 2
+length 3
+set 0
+phrase
+phrase -no
+set 1
+phrase
+phrase -no
+set 2
+phrase -no
+set 1
+phrase
