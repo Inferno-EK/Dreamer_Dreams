@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main+CreateHero+ChooseDifficulty.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Platformer.unity
+    guid: dced17d2e0366ba45bea0bef8da8a8f4
+  - enabled: 1
+    path: Assets/Scenes/Events/FindedPersone.unity
+    guid: eff8115f040c40643b3defdec0b55d83
+  - enabled: 1
+    path: Assets/Scenes/Events/ChangePosition.unity
+    guid: c9054a71175b2b9429d7937e00a8d5b2
   m_configObjects: {}

@@ -62,7 +62,7 @@ public class SpriteSellector : MonoBehaviour
 
     private void OnArrowClick(ArrowDerection derection)
     {
-        if (derection == ArrowDerection.Right)
+        if (derection == ArrowDerection.Left)
         {
             _index = (_index == 0 ? AllSprite.Length : _index) - 1;
         }

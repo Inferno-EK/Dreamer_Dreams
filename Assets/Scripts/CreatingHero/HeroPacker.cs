@@ -27,11 +27,19 @@ public class HeroPacker : MonoBehaviour
     [SerializeField] Slider _eyeColor_G;
     [SerializeField] Slider _eyeColor_B;
 
+    private int newHeroId = -1;
+
     public void HeroMake()
     {
-
         Global gl = Global.Instantiate();
-        Debug.Log(gl.Herous.Add(
+
+        if (newHeroId != -1)
+        {
+            gl.Herous.Delete(newHeroId);
+        }        
+
+
+        newHeroId = gl.Herous.Add(
             new Hero(
                 _nameField.name, 
                 new Appearance(
@@ -41,8 +49,11 @@ public class HeroPacker : MonoBehaviour
                 ), 
                 1f
             )
-        ));
+        );
+
+        Debug.Log(newHeroId);
     }
+
 
     private Color makeColor (Slider To_R, Slider To_G, Slider To_B)
     {

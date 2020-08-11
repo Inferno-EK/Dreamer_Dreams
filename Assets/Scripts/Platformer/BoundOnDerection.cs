@@ -13,7 +13,7 @@ public class BoundOnDerection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.GetComponent<moveTouch>() != null)
+        if (collision.transform.GetComponent<HeroMove>() != null)
         {
             isOn = true;
             _parentBound.CreateNewWay();
@@ -22,7 +22,7 @@ public class BoundOnDerection : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.GetComponent<moveTouch>() != null)
+        if (collision.transform.GetComponent<HeroMove>() != null)
         {
             isOn = false;
             _parentBound.DeleteOldWay();
