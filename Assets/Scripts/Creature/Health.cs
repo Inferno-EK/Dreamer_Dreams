@@ -1,7 +1,7 @@
 ﻿public class Health
 {
-    public int MaxHealth { get; private set; }
-    public int NowHealth { get; private set; }
+    public int MaxHealth { get; set; }
+    public int NowHealth { get; set; }
     public void Heal(float Percent)
     {
         NowHealth += (int) (MaxHealth * Percent);

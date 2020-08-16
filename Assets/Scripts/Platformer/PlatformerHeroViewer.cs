@@ -7,27 +7,21 @@ public class PlatformerHeroViewer : MonoBehaviour
 {
     [SerializeField] private Text _name;
     [SerializeField] private SpriteRenderer _body;
-    [SerializeField] private int _mainHeroId;
-    [SerializeField] private int _secondHeroId;
 
     private Global gl;
-    private bool _isMainHero;
-    private bool _haveTab;
-    private void Start()
+
+    private void Awake()
     {
         gl = Global.Instantiate();
-        if (!gl.Herous.IsValidIndex(_mainHeroId)) Debug.LogError("Main hero not initialised");
-        _body.color = gl.Herous[_mainHeroId].HeroAppearance.BodyColor;
-        _haveTab = _secondHeroId != -1 && gl.Herous.IsValidIndex(_secondHeroId);
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        if (_haveTab && Input.GetKeyDown(KeyCode.Tab))
+        if (gl.mainHero == null)
         {
-            _isMainHero = !_isMainHero;
-            _body.color = gl.Herous[_isMainHero ? _mainHeroId : _secondHeroId].HeroAppearance.BodyColor;
+#if MYDEBUG
+            gl.mainHero = new Hero("Тут будет имя", new Appearance(Color.white, Color.white, Color.white), 1);
+#else
+            Debug.LogError("Main hero not initialised");
+#endif
         }
+        _body.color = gl.mainHero.HeroAppearance.BodyColor;
+        _name.text = gl.mainHero.Name;
     }
 }

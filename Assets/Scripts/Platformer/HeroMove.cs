@@ -1,9 +1,8 @@
-﻿#define MYDEBUG
-
-using Enums;
+﻿using Enums;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class HeroMove : MonoBehaviour
@@ -13,17 +12,27 @@ public class HeroMove : MonoBehaviour
     [SerializeField] private GameObject spirit;
     private Rigidbody2D _rigidBody;
     private Vector3 scale;
-
+    private Global gl;
     private void Start()
     {
+        gl = Global.Instantiate();
         SpiritDash.Spirit = spirit;
         scale = transform.localScale;
         _rigidBody = transform.GetComponent<Rigidbody2D>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
-    { 
+    {
         if (collision.transform.GetComponent<IsGround>() != null)
+        {
+            Jumper.Refresh();
+            Dasher.Refresh();
+        }
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+
+        if (collision.transform.GetComponent<IsGround>() != null && !Input.GetKey(KeyCode.Space))
         {
             Jumper.Refresh();
             Dasher.Refresh();
@@ -33,6 +42,9 @@ public class HeroMove : MonoBehaviour
     Derection nowDerection = Derection.Right;
     private void Update()
     {
+
+        if (!gl.mainHero.IsAlife)
+            SceneManager.LoadScene("Died");
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             StartCoroutine(SpiritDash.SpiritPath(this));

@@ -1,5 +1,6 @@
 ﻿namespace Delegates
 {
+    public delegate void OnChangeHealth(float percent);
     public delegate void OnChangeColor(UnityEngine.Color color);
     public delegate void OnValueChange(UnityEngine.Sprite toChange, int number);
     public delegate Weapon WeaponConstructor();

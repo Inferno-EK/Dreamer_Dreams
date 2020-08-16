@@ -29,7 +29,7 @@ public class SmartList<T>
 
     public bool IsValidIndex(int key)
     {
-        return !_base[key].Equals(default);
+        return key < _base.Count && key >= 0 && !_base[key].Equals(default);
     }
 
     public int Add(T value)

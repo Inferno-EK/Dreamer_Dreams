@@ -1,9 +1,32 @@
-﻿namespace Enums
+﻿using UnityEngine;
+
+namespace Enums
 {
     public enum Derection
     {
         Left = 1,
         Right = -1
+    }
+
+
+    public enum AllDerection 
+    {
+        Left,
+        Right,
+        Up,
+        Down
+    }
+
+    static public class VectorDerections 
+    {
+
+        static public Vector2[] VectorDerection =
+         {
+        new Vector2(1, 0),
+        new Vector2(-1, 0),
+        new Vector2(0, 1),
+        new Vector2(0, -1)
+        }; 
     }
 
     public enum Settings

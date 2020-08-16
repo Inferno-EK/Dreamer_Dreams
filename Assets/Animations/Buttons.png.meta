@@ -12,6 +12,7 @@ TextureImporter:
     21300014: LeftArrow
     21300016: RightArrow
     21300018: NextStageCreateHero
+    21300020: BackDiff
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -300,6 +301,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 855dbb9e484271f80800000000000000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackDiff
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3072
+        width: 1536
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296d8b6925faa584c89a38a2ce86b42e
       vertices: []
       indices: 
       edges: []

@@ -9,10 +9,11 @@ public class Hero : Creature
     {
         HeroAppearance = Self;
         System.Random random = new System.Random();
+        Characteristics.Randomising(ScaleCharacteristicsFactor);
         HeroGenger = (Genger)(random.Next(0, 2));
     }
     
-    public void Heal(float Percent)
+    public void Heal(float Percent = 1)
     {
         Characteristics.ThisHealth.Heal(Percent);
     }

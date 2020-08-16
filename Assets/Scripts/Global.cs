@@ -7,6 +7,7 @@ using System.Reflection;
 
 public class Global
 {
+	public Hero mainHero;
 	public SmartList<Hero> Herous;
 	public SmartList<Enemy> Enemies;
 	public Settings AllSettings;
@@ -15,6 +16,7 @@ public class Global
 	private static Global inisialisadedObject;
 	private Global()
 	{
+		mainHero = null;
 		Herous = new SmartList<Hero>();
 		Enemies = new SmartList<Enemy>();
 		AllSettings =  Settings.Instantiate();

@@ -7,10 +7,6 @@ static public class SpiritDash
     static public bool SpiritSummoned { get; private set; } = false;
     static public bool Active = true;
     static public bool Enabled = false;
-    static public bool MoveUp { get; private set; } = false;
-    static public bool MoveDown { get; private set; } = false;
-    static public bool MoveLeft { get; private set; } = false;
-    static public bool MoveRight { get; private set; } = false;
 
     static private void recharge()
     {
@@ -35,18 +31,7 @@ static public class SpiritDash
                     float axisH = Input.GetAxis("Horizontal");
                     float axisV = Input.GetAxis("Vertical");
 
-                    float axisHR = Input.GetAxisRaw("Horizontal");
-                    float axisVR = Input.GetAxisRaw("Vertical");
-
-                    MoveUp = axisVR == 1;
-                    MoveDown = axisVR == -1;
-                    MoveRight = axisHR == 1;
-                    MoveLeft = axisHR == -1;
-
-                    if (System.Math.Abs(axisH) >= System.Math.Abs(axisV))
-                        Spirit.transform.position += new Vector3(axisH, 0) * 0.05f;
-                    else
-                        Spirit.transform.position += new Vector3(0, axisV) * 0.05f;
+                    Spirit.transform.position += new Vector3(axisH, axisV) * 0.05f;
 
                     time += Time.fixedDeltaTime;
                     yield return new WaitForFixedUpdate();

@@ -1,23 +1,26 @@
-﻿using UnityEngine;
+﻿using Delegates;
+using UnityEngine;
 public class Creature
-{    
+{
+    public OnChangeHealth onChangeHealth;
     public int Id { get; }
-    public string Name { get; }
-    public bool IsAlife { get; protected set; }
+    public string Name { get; } = "";
+    public bool IsAlife { get; protected set; } = true;
     public Characteristics Characteristics { get; protected set; }
     public Weapon ThisWeapon { get; protected set; }
     public int Health
     {
         get
         {
-            return _health;
+            return Characteristics.ThisHealth.NowHealth;
         }
         protected set 
         {
             IsAlife = value > 0;
-            _health = value;
-            if (!IsAlife) _health = 0;
-            if (_health > _maxHealth) _health = _maxHealth;
+            Characteristics.ThisHealth.NowHealth = value;
+            if (!IsAlife) Characteristics.ThisHealth.NowHealth = 0;
+            if (Characteristics.ThisHealth.NowHealth > Characteristics.ThisHealth.MaxHealth) Characteristics.ThisHealth.NowHealth = Characteristics.ThisHealth.MaxHealth;
+            onChangeHealth.Invoke(((float)Characteristics.ThisHealth.NowHealth) / Characteristics.ThisHealth.MaxHealth);
         }
     }
     public int Energy
@@ -35,6 +38,7 @@ public class Creature
     }
     public int Mood { get; protected set; }
 
+    
     public Creature(int Id, string Name, float Scale = 1f)
     { 
         this.Id = Id;
@@ -50,12 +54,12 @@ public class Creature
         if (Energy > _maxEnergy) Energy = _maxEnergy;
         return newEnergy >= 0;
     }
+    public void Damage(int value)
+    {
+        Health -= value;
+    }
 
-    protected int _maxHealth;
     protected int _maxEnergy;
-
-
     private int _energy;
-    private int _health;
 }
 
